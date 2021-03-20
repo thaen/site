@@ -16,7 +16,7 @@ Resources:
               AWS: "arn:aws:iam::142362848012:role/lambda-basicauth-exec"
             Action: "s3:GetObject*"
             Resource: "arn:aws:s3:::efj-site/*"
-          - Effect": Allow
+          - Effect: Allow
             Principal:
               Canonicaluser: !GetAtt CFrontOAI.S3CanonicalUserId
             Action: "s3:GetObject"
