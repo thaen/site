@@ -11,6 +11,10 @@ Resources:
       DistributionConfig:
         DefaultRootObject: index.html
         Enabled: True
+        DefaultCacheBehavior:
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
+          TargetOriginId: S3-efj-site
         Origins:
           - DomainName: efj-site.s3.amazonaws.com
             Id: S3-efj-site
