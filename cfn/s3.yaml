@@ -19,6 +19,14 @@ Resources:
           - 's3:GetObject*'
           Resource:
           - 'arn:aws:s3:::efj-site/*'
+        - Sid: AllowCfront
+          Effect: Allow
+          Principal:
+            CanonicalUser: !GetAtt CFrontOAI.S3CanonicalUserId
+          Action:
+          - 's3:GetObject'
+          Resource:
+          - 'arn:aws:s3:::efj-site/*'
   CFront:
     Type: AWS::CloudFront::Distribution
     Properties:
