@@ -5,6 +5,22 @@ Resources:
       BucketName: efj-site
       WebsiteConfiguration:
         IndexDocument: index.html
+  HelloBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties: 
+      Bucket: !Ref HelloBucket
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: "arn:aws:iam::142362848012:role/lambda-basicauth-exec"
+            Action: "s3:GetObject*"
+            Resource: "arn:aws:s3:::efj-site/*"
+          - Effect": Allow
+            Principal:
+              Canonicaluser: !GetAtt CFrontOAI.S3CanonicalUserId
+            Action: "s3:GetObject",
+            Resource: "arn:aws:s3:::efj-site/*"
   CFront:
     Type: AWS::CloudFront::Distribution
     Properties:
