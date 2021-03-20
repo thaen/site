@@ -13,14 +13,18 @@ Resources:
         Statement:
           - Effect: Allow
             Principal:
-              AWS: "arn:aws:iam::142362848012:role/lambda-basicauth-exec"
-            Action: "s3:GetObject*"
-            Resource: "arn:aws:s3:::efj-site/*"
+              AWS: 'arn:aws:iam::142362848012:role/lambda-basicauth-exec'
+            Action:
+              - 's3:GetObject*'
+            Resource:
+              - 'arn:aws:s3:::efj-site/*'
           - Effect: Allow
             Principal:
               Canonicaluser: !GetAtt CFrontOAI.S3CanonicalUserId
-            Action: "s3:GetObject"
-            Resource: "arn:aws:s3:::efj-site/*"
+            Action:
+              - 's3:GetObject'
+            Resource:
+              - 'arn:aws:s3:::efj-site/*'
   CFront:
     Type: AWS::CloudFront::Distribution
     Properties:
