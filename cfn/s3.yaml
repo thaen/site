@@ -1,4 +1,5 @@
 Resources:
   HelloBucket:
     Type: AWS::S3::Bucket
-    BucketName: efj-site
+    Properties:
+      BucketName: efj-site
