@@ -10,7 +10,7 @@ Resources:
     Properties:
       DistributionConfig:
         DefaultRootObject: index.html
-	Enabled: True
-	Origins:
-	  DomainName: efj-site.s3.amazonaws.com
-	  Id: S3-efj-site
+        Enabled: True
+        Origins:
+          DomainName: efj-site.s3.amazonaws.com
+          Id: S3-efj-site
