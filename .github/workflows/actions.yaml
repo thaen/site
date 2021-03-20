@@ -21,7 +21,7 @@ jobs:
 
     - name: Deploy site CFN resources.
       id: efj-mysite
-      uses: aws-actions/aws-cloudformation-github-deploy@master
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
         name: bucket
         template: cfn/s3.yaml
