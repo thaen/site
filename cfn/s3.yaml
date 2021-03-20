@@ -12,5 +12,5 @@ Resources:
         DefaultRootObject: index.html
         Enabled: True
         Origins:
-          DomainName: efj-site.s3.amazonaws.com
-          Id: S3-efj-site
+          - DomainName: efj-site.s3.amazonaws.com
+            Id: S3-efj-site
