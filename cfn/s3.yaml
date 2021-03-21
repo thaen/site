@@ -39,9 +39,8 @@ Resources:
           CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
           TargetOriginId: S3-efj-site-east-1
         LambdaFunctionAssociations:
-          - 
-            EventType: viewer-request
-            LambdaFunctionARN: !Ref: CFrontAuthLambda.Version
+          - EventType: viewer-request
+            LambdaFunctionARN: !Ref CFrontAuthLambdaVersion
         Origins:
           - DomainName: efj-site-east-1.s3.amazonaws.com
             Id: S3-efj-site-east-1
@@ -53,6 +52,10 @@ Resources:
       CloudFrontOriginAccessIdentityConfig:
         Comment: 'efj-site-east-1.s3.amazonaws.com'
 
+  CFrontAuthLambdaVersion:
+    Type: AWS::Lambda::Version
+    Properties:
+      FunctionName: !Ref CFrontAuthLambda
   CFrontAuthLambda:
     Type: AWS::Lambda::Function
     Properties:
