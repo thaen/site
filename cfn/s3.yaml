@@ -65,8 +65,8 @@ Resources:
             const headers = request.headers;
 
             // Configure authentication - replaced at github action time
-            const authUser = USERNAME_FROM_GITHUB_SECRET;
-            const authPass = PASSWORD_FROM_GITHUB_SECRET;
+            const authUser = "USERNAME_FROM_GITHUB_SECRET";
+            const authPass = "PASSWORD_FROM_GITHUB_SECRET";
 
             // Construct the Basic Auth string
             const authString = 'Basic ' + new Buffer(authUser + ':' + authPass).toString('base64');
