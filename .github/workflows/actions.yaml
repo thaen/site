@@ -12,8 +12,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Replace CFN username because I'm lazy
-    - run: sed -ie s/USERNAME_FROM_GITHUB_SECRET/${{ secrets.SITE_USERNAME }}/ cfn/s3.yaml
-    - name: Replace CFN password for the same reason
+      run: sed -ie s/USERNAME_FROM_GITHUB_SECRET/${{ secrets.SITE_USERNAME }}/ cfn/s3.yaml
     - run: sed -ie s/PASSWORD_FROM_GITHUB_SECRET/${{ secrets.SITE_PASSWORD }}/ cfn/s3.yaml
 
     - name: Configure AWS credentials
