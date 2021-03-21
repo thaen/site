@@ -52,7 +52,7 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Runtime: nodejs12.x
-      Role:
+      Role: !GetAtt LambdaEdgeFunctionRole.Arn
       Handler: index.handler
       Description: Edge lambda for auth etc
       Code:
