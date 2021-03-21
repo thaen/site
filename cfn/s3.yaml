@@ -29,7 +29,7 @@ Resources:
           - 'arn:aws:s3:::efj-site-east-1/*'
   CFront:
     Type: AWS::CloudFront::Distribution
-    DependsOn: CFrontAuthLambda
+    DependsOn: CFrontAuthLambdaVersion
     Properties:
       DistributionConfig:
         DefaultRootObject: index.html
@@ -40,6 +40,7 @@ Resources:
           TargetOriginId: S3-efj-site-east-1
         LambdaFunctionAssociations:
           - EventType: viewer-request
+            IncludeBody: True
             LambdaFunctionARN: !Ref CFrontAuthLambdaVersion
         Origins:
           - DomainName: efj-site-east-1.s3.amazonaws.com
@@ -55,6 +56,7 @@ Resources:
   CFrontAuthLambdaVersion:
     Type: AWS::Lambda::Version
     Properties:
+      Description: "v1"
       FunctionName: !Ref CFrontAuthLambda
   CFrontAuthLambda:
     Type: AWS::Lambda::Function
