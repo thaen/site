@@ -29,6 +29,7 @@ Resources:
           - 'arn:aws:s3:::efj-site-east-1/*'
   CFront:
     Type: AWS::CloudFront::Distribution
+    DependsOn: CFrontAuthLambda
     Properties:
       DistributionConfig:
         DefaultRootObject: index.html
