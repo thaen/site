@@ -41,7 +41,7 @@ Resources:
         LambdaFunctionAssociations:
           - 
             EventType: viewer-request
-            LambdaFunctionARN: !Ref CFrontAuthLambda.Version
+            LambdaFunctionARN: !Ref: CFrontAuthLambda.Version
         Origins:
           - DomainName: efj-site-east-1.s3.amazonaws.com
             Id: S3-efj-site-east-1
