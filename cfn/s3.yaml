@@ -9,6 +9,12 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: efj-originals-east-1
+  OriginalsBucketUser:
+    Type: AWS::IAM::User
+    Properties:
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/AmazonS3FullAccess
+      UserName: OriginalsBucketUser
   HelloBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties: 
