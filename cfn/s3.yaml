@@ -5,6 +5,10 @@ Resources:
       BucketName: efj-site-east-1
       WebsiteConfiguration:
         IndexDocument: index.html
+  OriginalsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: efj-originals-east-1
   HelloBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties: 
