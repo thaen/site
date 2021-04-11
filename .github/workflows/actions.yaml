@@ -2,6 +2,7 @@ name: Deploy Cluster
 
 on: push
 
+
 jobs:
   cluster:
     name: Deploy stack to AWS
