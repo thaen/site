@@ -44,6 +44,18 @@ Resources:
         - HostedZoneId: Z088812731O3I2JEY155Q
           DomainName: troubles-roll-by.net
       ValidationMethod: DNS
+  myDNS:
+    Type: 'AWS::Route53::RecordSetGroup'
+    Properties:
+      HostedZoneId: Z088812731O3I2JEY155Q
+      RecordSets:
+        - Name: troubles-roll-by.net
+          Type: A
+          AliasTarget:
+            HostedZoneId: Z2FDTNDATAQYW2
+            DNSName: !GetAtt
+              - CFront
+              - DomainName
   CFront:
     Type: AWS::CloudFront::Distribution
     DependsOn: CFrontAuthLambdaVersion
