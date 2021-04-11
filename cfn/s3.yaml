@@ -40,9 +40,9 @@ Resources:
     Type: AWS::CertificateManager::Certificate
     Properties:
       DomainName: troubles-roll-by.net
-      DomainValidationOption:
-        HostedZoneId: Z088812731O3I2JEY155Q
-        DomainName: troubles-roll-by.net
+      DomainValidationOptions:
+        - HostedZoneId: Z088812731O3I2JEY155Q
+          DomainName: troubles-roll-by.net
   CFront:
     Type: AWS::CloudFront::Distribution
     DependsOn: CFrontAuthLambdaVersion
