@@ -43,6 +43,7 @@ Resources:
       DomainValidationOptions:
         - HostedZoneId: Z088812731O3I2JEY155Q
           DomainName: troubles-roll-by.net
+      ValidationMethod: DNS
   CFront:
     Type: AWS::CloudFront::Distribution
     DependsOn: CFrontAuthLambdaVersion
