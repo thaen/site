@@ -36,11 +36,23 @@ Resources:
           - 's3:GetObject'
           Resource:
           - 'arn:aws:s3:::efj-site-east-1/*'
+  Certificate:
+    Type: AWS::CertificateManager::Certificate
+    DomainName: troubles-roll-by.net
+    DomainValidationOption:
+      HostedZoneId: Z088812731O3I2JEY155Q
+      DomainName: troubles-roll-by.net
   CFront:
     Type: AWS::CloudFront::Distribution
     DependsOn: CFrontAuthLambdaVersion
     Properties:
       DistributionConfig:
+        Aliases:
+        - troubles-roll-by.net
+        ViewerCertificate:
+          AcmCertificateArn: !Ref Certificate
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1
         DefaultRootObject: index.html
         Enabled: True
         DefaultCacheBehavior:
