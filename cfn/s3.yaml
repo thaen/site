@@ -38,10 +38,11 @@ Resources:
           - 'arn:aws:s3:::efj-site-east-1/*'
   Certificate:
     Type: AWS::CertificateManager::Certificate
-    DomainName: troubles-roll-by.net
-    DomainValidationOption:
-      HostedZoneId: Z088812731O3I2JEY155Q
+    Properties:
       DomainName: troubles-roll-by.net
+      DomainValidationOption:
+        HostedZoneId: Z088812731O3I2JEY155Q
+        DomainName: troubles-roll-by.net
   CFront:
     Type: AWS::CloudFront::Distribution
     DependsOn: CFrontAuthLambdaVersion
