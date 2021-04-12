@@ -89,14 +89,15 @@ Resources:
         Comment: 'efj-site-east-1.s3.amazonaws.com'
 
   CFrontAuthLambda:
-    Type: AWS::Lambda::Function
+    Type: AWS::Serverless::Function
+    Transform: AWS::Serverless-2016-10-31
     Properties:
       Runtime: nodejs12.x
       Role: !GetAtt LambdaEdgeFunctionRole.Arn
       Handler: index.handler
       Description: Edge lambda for auth etc 4
       AutoPublishAlias: CFrontAuthLambdaAlias
-      Code:
+      InlineCode:
         ZipFile: |
           'use strict';
           exports.handler = (event, context, callback) => {
