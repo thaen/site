@@ -114,7 +114,7 @@ Resources:
 
             // Construct the Basic Auth string
             const authString = 'Basic ' + new Buffer(authUser + ':' + authPass).toString('base64');
-            const cookieAuth = "efjefjefjefj=" + authString;
+            const cookieAuth = "efjefjefj=" + authString;
 
             // Require Basic authentication - first see if there's a cookie with the right string.
             var cookieAuthed = false;
