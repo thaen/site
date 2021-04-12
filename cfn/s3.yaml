@@ -107,7 +107,7 @@ Resources:
       Runtime: nodejs12.x
       Role: !GetAtt LambdaEdgeFunctionRole.Arn
       Handler: index.handler
-      Description: Edge lambda for auth etc
+      Description: Edge lambda for auth etc 4
       Code:
         ZipFile: |
           'use strict';
