@@ -76,15 +76,7 @@ Resources:
           LambdaFunctionAssociations:
             - EventType: viewer-request
               IncludeBody: True
-              LambdaFunctionARN:
-                Fn::Join:
-                - ":"
-                - - Fn::GetAtt:
-                    - CFrontAuthLambda
-                    - Arn
-                  - Fn::GetAtt:
-                    - CFrontAuthLambdaVersion
-                    - Version
+              LambdaFunctionARN: !Ref CFrontAuthLambda.Version
         Origins:
           - DomainName: efj-site-east-1.s3.amazonaws.com
             Id: S3-efj-site-east-1
@@ -96,11 +88,6 @@ Resources:
       CloudFrontOriginAccessIdentityConfig:
         Comment: 'efj-site-east-1.s3.amazonaws.com'
 
-  CFrontAuthLambdaVersion:
-    Type: AWS::Lambda::Version
-    Properties:
-      Description: "v1"
-      FunctionName: !Ref CFrontAuthLambda
   CFrontAuthLambda:
     Type: AWS::Lambda::Function
     Properties:
@@ -108,6 +95,7 @@ Resources:
       Role: !GetAtt LambdaEdgeFunctionRole.Arn
       Handler: index.handler
       Description: Edge lambda for auth etc 4
+      AutoPublishAlias: CFrontAuthLambdaAlias
       Code:
         ZipFile: |
           'use strict';
