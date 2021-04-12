@@ -59,7 +59,7 @@ Resources:
               - DomainName
   CFront:
     Type: AWS::CloudFront::Distribution
-    DependsOn: CFrontAuthLambdaVersion
+    DependsOn: CFrontAuthLambda
     Properties:
       DistributionConfig:
         Aliases:
