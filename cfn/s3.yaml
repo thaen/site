@@ -8,7 +8,7 @@ Resources:
         IndexDocument: index.html
   OriginalsBucket:
     Type: AWS::S3::Bucket
-    DependsOn: OriginalsSqsNotificationQueue
+    DependsOn: S3EventQueuePolicy
     Properties:
       BucketName: efj-originals-east-1
       NotificationConfiguration:
@@ -22,6 +22,21 @@ Resources:
     Type: AWS::SQS::Queue
     Properties:
       QueueName: OriginalsSqsNotificationQueue
+  S3EventQueuePolicy:
+    Type: AWS::SQS::QueuePolicy
+    DependsOn: OriginalsSqsNotificationQueue
+    Properties:
+      PolicyDocument:
+        - Sid: AllowS3Messages
+          Effect: Allow
+          Principal: "*"
+          Resource:
+            Fn::GetAtt:
+              - "OriginalsSqsNotificationQueue"
+              - "Arn"
+          Action: "SQS:SendMessage"
+      Queues:
+        - Ref: OriginalsSqsNotificationQueue
   OriginalsBucketUser:
     Type: AWS::IAM::User
     Properties:
