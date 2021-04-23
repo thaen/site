@@ -27,14 +27,16 @@ Resources:
     DependsOn: OriginalsSqsNotificationQueue
     Properties:
       PolicyDocument:
-        - Sid: AllowS3Messages
-          Effect: Allow
-          Principal: "*"
-          Resource:
-            Fn::GetAtt:
-              - "OriginalsSqsNotificationQueue"
-              - "Arn"
-          Action: "SQS:SendMessage"
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowS3Messages
+            Effect: Allow
+            Principal: "*"
+            Resource:
+              Fn::GetAtt:
+                - "OriginalsSqsNotificationQueue"
+                - "Arn"
+            Action: "SQS:SendMessage"
       Queues:
         - Ref: OriginalsSqsNotificationQueue
   OriginalsBucketUser:
