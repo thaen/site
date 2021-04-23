@@ -10,6 +10,17 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: efj-originals-east-1
+      NotificationConfiguration:
+        QueueConfigurations:
+          Event: s3:ObjectCreated:*
+          Queue:
+            Fn::GetAtt:
+              - "OriginalsSqsNotificationQueue"
+	      - "Arn"
+  OriginalsSqsNotificationQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: OriginalsSqsNotificationQueue
   OriginalsBucketUser:
     Type: AWS::IAM::User
     Properties:
@@ -184,3 +195,10 @@ Resources:
             Service: 
             - "lambda.amazonaws.com"
             - "edgelambda.amazonaws.com"
+Outputs:
+  QueueARN:
+    Description: The ARN of the S3 originals notification queue
+    Value: 
+      Fn::GetAtt: 
+        - "OriginalsSqsNotificationQueue"
+        - "Arn"
