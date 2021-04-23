@@ -8,6 +8,7 @@ Resources:
         IndexDocument: index.html
   OriginalsBucket:
     Type: AWS::S3::Bucket
+    DependsOn: OriginalsSqsNotificationQueue
     Properties:
       BucketName: efj-originals-east-1
       NotificationConfiguration:
