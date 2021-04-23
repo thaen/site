@@ -197,7 +197,7 @@ Resources:
             - "edgelambda.amazonaws.com"
 Outputs:
   QueueARN:
-    Description: The ARN of the S3 originals notification queue
+    Description: The ARN of the S3 originals notification queue.
     Value: 
       Fn::GetAtt: 
         - "OriginalsSqsNotificationQueue"
