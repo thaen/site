@@ -12,11 +12,11 @@ Resources:
       BucketName: efj-originals-east-1
       NotificationConfiguration:
         QueueConfigurations:
-          Event: s3:ObjectCreated:*
-          Queue:
-            Fn::GetAtt:
-              - "OriginalsSqsNotificationQueue"
-              - "Arn"
+          - Event: s3:ObjectCreated:*
+            Queue:
+              Fn::GetAtt:
+                - "OriginalsSqsNotificationQueue"
+                - "Arn"
   OriginalsSqsNotificationQueue:
     Type: AWS::SQS::Queue
     Properties:
