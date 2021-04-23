@@ -16,7 +16,7 @@ Resources:
           Queue:
             Fn::GetAtt:
               - "OriginalsSqsNotificationQueue"
-	      - "Arn"
+              - "Arn"
   OriginalsSqsNotificationQueue:
     Type: AWS::SQS::Queue
     Properties:
